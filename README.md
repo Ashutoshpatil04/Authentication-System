@@ -1,2 +1,36 @@
-# Authentication-System
-Here is a concise description of your project in 350 characters:  Developed a basic authentication system in Python with user registration and login functionalities. Ensures unique usernames and secure password storage. Continuously prompts for user actions: register, login, or exit. Provides clear feedback messages. 
+# Basic Authentication System
+
+## Description
+This project is a simple authentication system implemented in Python. It allows users to register with a unique username and password, and then log in using their credentials. The system continuously prompts users to register, log in, or exit, providing a user-friendly interface.
+
+## Features
+- **User Registration:** Allows new users to register with a unique username and password.
+- **User Login:** Authenticates existing users by verifying their credentials.
+- **Input Validation:** Ensures that usernames are unique and passwords are correctly matched.
+- **User Feedback:** Provides clear feedback messages for successful registration, login, and error handling.
+- **Continuous Operation:** Utilizes a loop to keep the system running until the user decides to exit.
+
+## Usage
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/authentication-system.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd authentication-system
+    ```
+3. Run the script:
+    ```bash
+    python authentication_system.py
+    ```
+
+## Example
+```python
+Basic Authentication System
+1. Register
+2. Login
+3. Exit
+Enter your choice: 1
+Enter username: user1
+Enter password: pass1
+User registered successfully
