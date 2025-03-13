@@ -13,7 +13,7 @@ This project is a simple authentication system implemented in Python. It allows 
 ## Usage
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/authentication-system.git
+    git clone https://github.com/Ashutoshpatil04/authentication-system.git
     ```
 2. Navigate to the project directory:
     ```bash
