@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #4285f4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .btn {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .option-btn {
+            flex: 1;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .option-btn.active {
+            background-color: #4285f4;
+            color: white;
+        }
+        
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Authentication System</h1>
+        </div>
+        <div class="content">
+            <div class="options">
+                <button class="option-btn active" id="registerBtn">Register</button>
+                <button class="option-btn" id="loginBtn">Login</button>
+            </div>
+            
+            <!-- Register Form -->
+            <div id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" placeholder="Enter password">
+                </div>
+                <button class="btn" id="registerSubmit">Register</button>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="hide">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password">
+                </div>
+                <button class="btn" id="loginSubmit">Login</button>
+            </div>
+            
+            <!-- Message Display -->
+            <div id="message" class="message hide"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Store user credentials
+        const userCredentials = {};
+        
+        // DOM Elements
+        const registerBtn = document.getElementById('registerBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerForm = document.getElementById('registerForm');
+        const loginForm = document.getElementById('loginForm');
+        const message = document.getElementById('message');
+        
+        // Register functionality
+        document.getElementById('registerSubmit').addEventListener('click', function() {
+            const username = document.getElementById('regUsername').value.trim();
+            const password = document.getElementById('regPassword').value;
+            
+            if (!username || !password) {
+                showMessage('Please enter both username and password', 'error');
+                return;
+            }
+            
+            if (username in userCredentials) {
+                showMessage('Username already exists. Please choose another username', 'error');
+            } else {
+                userCredentials[username] = password;
+                showMessage('User registered successfully', 'success');
+                document.getElementById('regUsername').value = '';
+                document.getElementById('regPassword').value = '';
+            }
+        });
+        
+        // Login functionality
+        document.getElementById('loginSubmit').addEventListener('click', function() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) {
+                showMessage('Please enter both username and password', 'error');
+                return;
+            }
+            
+            if (username in userCredentials && userCredentials[username] === password) {
+                showMessage('Welcome Back, ' + username + '!', 'success');
+            } else {
+                showMessage('Invalid username or password. Please try again.', 'error');
+            }
+        });
+        
+        // Tab switching
+        registerBtn.addEventListener('click', function() {
+            registerBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+            registerForm.classList.remove('hide');
+            loginForm.classList.add('hide');
+            message.classList.add('hide');
+        });
+        
+        loginBtn.addEventListener('click', function() {
+            loginBtn.classList.add('active');
+            registerBtn.classList.remove('active');
+            loginForm.classList.remove('hide');
+            registerForm.classList.add('hide');
+            message.classList.add('hide');
+        });
+        
+        // Helper function to show messages
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = 'message ' + type;
+            message.classList.remove('hide');
+            
+            // Auto hide message after 5 seconds
+            setTimeout(() => {
+                message.classList.add('hide');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
