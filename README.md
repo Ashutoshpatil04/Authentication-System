@@ -1,7 +1,7 @@
 # Basic Authentication System
 
 ## Description
-This project is a simple authentication system implemented in Python. It allows users to register with a unique username and password, and then log in using their credentials. The system continuously prompts users to register, log in, or exit, providing a user-friendly interface.
+This project is a simple authentication system implemented in Python. and also used HtML CSS JS to make it responsive . It allows users to register with a unique username and password, and then log in using their credentials. The system continuously prompts users to register, log in, or exit, providing a user-friendly interface.
 
 ## Features
 - **User Registration:** Allows new users to register with a unique username and password.
