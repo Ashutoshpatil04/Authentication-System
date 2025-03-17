@@ -10,6 +10,9 @@ This project is a simple authentication system implemented in Python. It allows 
 - **User Feedback:** Provides clear feedback messages for successful registration, login, and error handling.
 - **Continuous Operation:** Utilizes a loop to keep the system running until the user decides to exit.
 
+## 🎬 Live Demo
+🔗 [Live Demo](https://autheticaterprime.netlify.app/) 
+
 ## Usage
 1. Clone the repository:
     ```bash
@@ -19,9 +22,7 @@ This project is a simple authentication system implemented in Python. It allows 
     ```bash
     cd authentication-system
     ```
-3. Run the script:
-    ```bash
-    python authentication_system.py
+
     ```
 
 ## Example
